@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عمل الطالب ايهم جرادات  - Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: orange; /* تم تغيير لون الخلفية للبرتقالي */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: blue;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1> عمل الطالب ايهم جرادات  - المتتاليات</h1>
+    <div class="container">
+        <label for="option">اختر الخيار:</label>
+        <select id="option">
+            <option value="1">الحد  عام</option>
+            <option value="2">متتالية</option>
+        </select>
+        <div id="general" style="display: none;">
+            <label for="limit1">ادخل الحد الأول:</label>
+            <input type="number" id="limit1">
+            <label for="limit2">ادخل الحد الثاني:</label>
+            <input type="number" id="limit2">
+            <label for="limit3">ادخل الحد الثالث:</label>
+            <input type="number" id="limit3">
+            <label for="limit4">ادخل الحد الرابع:</label>
+            <input type="number" id="limit4">
+            <button onclick="calculateGeneral()">احسب</button>
+        </div>
+        <div id="sequential" style="display: none;">
+            <label for="ddr7">ادخل الحد المرغوب:</label>
+            <input type="number" id="ddr7">
+            <label for="ddr2">ادخل أول عدد في الحد العام:</label>
+            <input type="number" id="ddr2">
+            <label for="ddr3">اختر نوع الحد (1 لـ n، 2 لـ n^2، 3 لـ n^3):</label>
+            <input type="number" id="ddr3">
+            <label for="ddr4">اختر العلامة (1 لـ +، 2 لـ -):</label>
+            <input type="number" id="ddr4">
+            <label for="ddr5">ادخل الرقم:</label>
+            <input type="number" id="ddr5">
+            <button onclick="calculateSequential()">احسب</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+
+    <script>
+        function calculateGeneral() {
+            var limit1 = parseFloat(document.getElementById('limit1').value);
+            var limit2 = parseFloat(document.getElementById('limit2').value);
+            var limit3 = parseFloat(document.getElementById('limit3').value);
+            var limit4 = parseFloat(document.getElementById('limit4').value);
+
+            var result1 = limit2 - limit1;
+            var result2 = limit3 - limit2;
+            var result3 = limit4 - limit3;
+
+            if (result1 == result2 && result2 == result3) {
+                var uuu1 =  limit1 - result1 ;
+                if (result1>limit1){
+                    document.getElementById('result').innerText = 'النتيجة 1: n' + result1 + uuu1;
+                } else {
+                    document.getElementById('result').innerText = 'النتيجة: n' + result1 + '+' + uuu1;
+                }
+            } else {
+                var temp1 = result2 - result1;
+                var temp2 = result3 - result2;
+
+                if (temp1 == temp2 ) {
+                    var yyk = 1;
+                    var wwt = limit1 - yyk;
+                    if (limit1>yyk){
+                        document.getElementById('result').innerText = 'النتيجة: n^2 + ' + wwt;
+                    } else {
+                        document.getElementById('result').innerText = 'النتيجة: n^2' + wwt;
+                    }
+                } else {
+                    var yyki = 1;
+                    var wwwt = limit1 - yyki;
+                    if (limit1>yyki){
+                        document.getElementById('result').innerText = 'النتيجة: n^3 + ' + wwwt;
+                    } else {
+                        document.getElementById('result').innerText = 'النتيجة: n^3' + wwwt;
+                    }
+                } 
+            }
+        }
+
+        function calculateSequential() {
+            var ddr7 = parseFloat(document.getElementById('ddr7').value);
+            var ddr2 = parseFloat(document.getElementById('ddr2').value);
+            var ddr3 = parseFloat(document.getElementById('ddr3').value);
+            var ddr4 = parseFloat(document.getElementById('ddr4').value);
+            var ddr5 = parseFloat(document.getElementById('ddr5').value);
+
+            var result = 0;
+
+            if (ddr4 == 1) {
+                if (ddr3 == 1) {
+                    result = ddr2 * ddr7 + ddr5;
+                } else if (ddr3 == 2) {
+                    result = ddr2 * (ddr7 * ddr7) + ddr5;
+                } else if (ddr3 == 3) {
+                    result = ddr2 * (ddr7 * ddr7 * ddr7) + ddr5;
+                }
+            } else if (ddr4 == 2) {
+                if (ddr3 == 1) {
+                    result = ddr2 * ddr7 - ddr5;
+                } else if (ddr3 == 2) {
+                    result = ddr2 * (ddr7 * ddr7) - ddr5;
+                } else if (ddr3 == 3) {
+                    result = ddr2 * (ddr7 * ddr7 * ddr7) - ddr5;
+                }
+            }
+
+            document.getElementById('result').innerText = 'النتيجة: ' + result;
+        }
+
+        document.getElementById('option').addEventListener('change', function() {
+            var option = document.getElementById('option').value;
+            if (option == 1) {
+                document.getElementById('general').style.display = 'block';
+                document.getElementById('sequential').style.display = 'none';
+            } else {
+                document.getElementById('general').style.display = 'none';
+                document.getElementById('sequential').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
